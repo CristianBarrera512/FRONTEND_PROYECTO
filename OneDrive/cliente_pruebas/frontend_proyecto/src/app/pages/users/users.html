@@ -1,0 +1,92 @@
+<div class="users-container">
+    <div class="page-wrapper">
+        <section class="page-header">
+            <div class="header-info">
+                <div class="header-icon">
+                    🤴
+                </div>
+                <div>
+                    <h1>Gestion de Usuarios</h1>
+                    <p>
+                        Administracion de usuarios registrados en el sistema
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="content">
+            <section class="form-panel">
+                <div class="panel-title">
+                    <span>➕</span>
+                    <h2>Registrar Usuario</h2>
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="ingrese el nombre" [(ngModel)]="nombre">
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" placeholder="ingrese el apellido" [(ngModel)]="apellido">
+                </div>
+                <div class="form-group">
+                    <label>correo</label>
+                    <input type="email" placeholder="ingrese el correo" [(ngModel)]="correo">
+                </div>
+                <div class="form-group">
+                    <label>rol</label>
+                    <select [(ngModel)]="rol">
+                        <option>Administrador</option>
+                        <option>instructor</option>
+                        <option>Aprendiz</option>
+                    </select>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="estado">Usuario Activo
+                    </label>
+                </div>
+                <div class="buttons">
+                    <button class="btn-primary" (click)="registrarUsuario()">Registrar</button>
+                    <button class="btn-secondary" (click)="limpiarFormulario()">Limpiar</button>
+                </div>
+            </section>
+            <section class="table-panel">
+                <div class="panel-title">
+                    <span>📒</span>
+                    <h2>Usuario Registrados</h2>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>nombre</th>
+                                <th>apellido</th>
+                                <th>correo</th>
+                                <th>rol</th>
+                                <th>estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let  usuario of usuarios">
+                                <td>{{usuario.id}}</td>
+                                <td>{{usuario.nombre}}</td>
+                                <td>{{usuario.apellido}}</td>
+                                <td>{{usuario.correo}}</td>
+                                <td>{{usuario.rol}}</td>
+                                <td>
+                                    <span class="status-badge" [class.active]="usuario.estado"
+                                        [class.inactive]="!usuario.estado">
+                                        {{usuario.estado?'Activos':'Inactivo'}}
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <footer class="page-footer">
+            Sistema Adson - Panels de Administracion
+        </footer>
+    </div>
+</div>

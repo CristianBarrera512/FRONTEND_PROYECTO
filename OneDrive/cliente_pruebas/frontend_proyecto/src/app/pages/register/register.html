@@ -1,0 +1,121 @@
+<div class="register-container">
+    <div class="register-card">
+        <div class="header">
+            <h1>Registro de usuario</h1>
+            <p>Complete el siguente formulario</p>
+        </div>
+
+        <!--Inicio de formulario reactivo-->
+
+        <form [formGroup]="registerForm" (ngSubmit)="registroUsuario()" >
+
+            <!--Campo nombre-->
+        <div class="form-group">
+                <label for="nombre">nombre</label>
+                <input
+                    id="nombre" 
+                    type="text"
+                    placeholder="Ingrese su nombre"
+                    formControlName="nombre"
+                >
+                @if (nombre?.touched && apellido?.invalid){
+                        <small class="error">
+                            @if(nombre?.errors?.['required']){
+                                El nombre es obligatorio
+                            }
+                            @if (nombre?.errors?.['minlength']){
+                                El nombre debe tener minimo 3 caracteres
+                            }
+                        </small>
+                    }
+            </div>
+            <!--Apellido-->
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input
+                    id="apellido" 
+                    type="text"
+                    placeholder="Ingrese su apellido"
+                    formControlName="apellido"
+                >
+                @if (apellido?.touched && apellido?.invalid){
+                        <small class="error">
+                            @if(apellido?.errors?.['required']){
+                                El apellido es obligatorio
+                            }
+                            @if (apellido?.errors?.['minlength']){
+                                El apellido debe tener minimo 3 caracteres
+                            }
+                        </small>
+                    }
+            </div>
+            <!--Correo-->
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input
+                    id="correo" 
+                    type="text"
+                    placeholder="ingrese su correo"
+                    formControlName="correo"
+                >
+                 @if (correo?.touched && correo?.invalid){
+                        <small class="error">
+                            @if(correo?.errors?.['required']){
+                                El correo es obligatorio
+                            }
+                            @if (correo?.errors?.['email']){
+                                El Formato debe ser email 
+                            }
+                        </small>
+                    }
+            </div>
+            <!--Password-->
+            <div class="form-group">
+                <label for="Password">Contraseña</label>
+                <input
+                    id="password" 
+                    type="password"
+                    placeholder="ingrese la contraseña"
+                    formControlName="password"
+                >
+                 @if (password?.touched && password?.invalid){
+                        <small class="error">
+                            @if(password?.errors?.['required']){
+                                la contraseña es obligatorio
+                            }
+                            @if (password?.errors?.['minlength']){
+                                la contraseña debe ser mas de 8 caracteres
+                            }
+                             @if (password?.errors?.['pattern']){
+                                la contraseña debe tener los caracteres obligatorios
+                            }
+                        </small>
+                    }
+            </div>
+
+            <div class="form-group">
+                <label for="confirmarPassword">Confirmar Contraseña</label>
+                <input
+                    id="confirmarPassword" 
+                    type="Password"
+                    placeholder="repita la contraseña"
+                    formControlName="confirmarPassword"
+                >
+                @if( confirmarPassword?.touched && confirmarPassword?.invalid){
+                    <small class="error">
+                        @if(confirmarPassword?.errors?.['required']){
+                            debe confirmar la contraseña
+                        }
+                    </small>
+                }
+                <!--Error de confirmacion de contraseña-->
+                @if (registerForm.errors?.['passwordNoCoincide']&& confirmarPassword?.touched){
+                    la contraseña no conincide
+                }
+            </div>
+            <button type="submit " [disabled]="registerForm.invalid">
+                Registrarme
+            </button>
+        </form>
+    </div>
+</div>
