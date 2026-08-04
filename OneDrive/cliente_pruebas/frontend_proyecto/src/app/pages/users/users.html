@@ -19,6 +19,12 @@
                     <span>➕</span>
                     <h2>Registrar Usuario</h2>
                 </div>
+                <div *ngIf="mensaje" class="alert" [class.success]="tipoMensaje==='success'"
+                    [class.error]="tipoMensaje==='error'">
+                    {{mensaje}}
+                    >
+
+                </div>
                 <div class="form-group">
                     <label>Nombre</label>
                     <input type="text" placeholder="ingrese el nombre" [(ngModel)]="nombre">
@@ -45,7 +51,8 @@
                     </label>
                 </div>
                 <div class="buttons">
-                    <button class="btn-primary" (click)="registrarUsuario()">Registrar</button>
+                    <button class="btn-primary"
+                        (click)="registrarUsuario()">{{idEditar==null?'Registro':'Actualizar'}}</button>
                     <button class="btn-secondary" (click)="limpiarFormulario()">Limpiar</button>
                 </div>
             </section>
@@ -53,21 +60,38 @@
                 <div class="panel-title">
                     <span>📒</span>
                     <h2>Usuario Registrados</h2>
+                    <p class="table-info">
+                        Total de usuarios: <strong>{{obtenerTotalUsuarios()}}</strong>
+                    </p>
                 </div>
+                <div class="toolbar">
+                    <input type="text" placeholder="Buscar uusarios" [(ngModel)]="textoBusqueda"
+                        (input)="buscarUsuarios()">
+                    <select [(ngModel)]="filtroRol" (change)="buscarUsuarios()">
+                        <option value="">Todos los roles</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="instructor">instructor</option>
+                        <option value="Aprendiz">Aprendiz</option>
+                    </select>
+                </div>
+                <p class="table-info">
+                    Usuarios encontrados: <strong>{{usuariosFiltrados.length}}</strong>
+                </p>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>nombre</th>
-                                <th>apellido</th>
-                                <th>correo</th>
-                                <th>rol</th>
-                                <th>estado</th>
+                                <th class="sortable" (click)="ordenar('id')">Id {{obtenerIconoOrden('id')}}</th>
+                                <th class="sortable" (click)="ordenar('nombre')">nombre {{obtenerIconoOrden('nombre')}} </th>
+                                <th class="sortable" (click)="ordenar('apellido')">apellido {{obtenerIconoOrden('apellido')}} </th>
+                                <th class="sortable" (click)="ordenar('correo')">correo {{obtenerIconoOrden('correo')}} </th>
+                                <th class="sortable" (click)="ordenar('rol')">rol {{obtenerIconoOrden('rol')}}</th>
+                                <th class="sortable" (click)="ordenar('estado')">estado {{obtenerIconoOrden('estado')}}</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let  usuario of usuarios">
+                            <tr *ngFor="let  usuario of usuariosPaginados">
                                 <td>{{usuario.id}}</td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.apellido}}</td>
@@ -79,9 +103,32 @@
                                         {{usuario.estado?'Activos':'Inactivo'}}
                                     </span>
                                 </td>
+                                <td>
+                                    <button class="btn-edit" (click)="editarUsuario(usuario)">✍️</button>
+                                    <button class="btn-delete" (click)="eliminarUsuario(usuario.id)">🪰</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="pagination-info">
+                        Mostrando {{usuariosPaginados.length}} de {{usuariosFiltrados.length}} usuarios
+                    </div>
+                    <div class="pagination">
+                        <button (click)="anteriorPagina()" [disabled]="paginaActual==1">
+                            ⬅️Anterior
+                        </button>
+                        <button *ngFor="let pagina of obtenerPaginas()"
+                        (click)="cambiarPagina(pagina)"
+                        [class.active-page]="pagina==paginaActual"
+                        >{{pagina}}
+                        </button>
+                        <button (click)="siguientePagina()"
+                        [disabled]="paginaActual==obtenerTotalPaginas()">
+                           Siguiente ➡️
+                        </button>
+
+                    </div>
+
                 </div>
             </section>
         </div>
