@@ -12,6 +12,9 @@ interface Usuario{
   estado:boolean;
 }
 
+ const STORAGE_KEY='usuariosSistema';
+
+
 @Component({
   selector: 'app-users',
   imports: [FormsModule, NgForOf, NgIf],
@@ -66,11 +69,17 @@ export class UsersComponent implements OnInit {
   //Bandera para saber si se esta editando un usuario
 
   modoEdicion:boolean=false;
+  //mostrar o no mostrar el modal
+  mostrarModalEliminar:boolean=false;
+  //usuario a eliminar
+
+  usuarioSeleccionado:Usuario|null=null;
+
+
 
   ngOnInit(): void {
     
-      this.cargarDatosIniciales();
-      this.usuariosFiltrados=[...this.usuarios]
+      this.cargarUsuarios();
       this.actualizarPaginacion();
   }
 
@@ -133,8 +142,6 @@ export class UsersComponent implements OnInit {
 
   registrarUsuario():void{
 
-
-    
     if(this.nombre.trim()===''|| this.apellido.trim()===''|| this.correo.trim()===''){
       this.tipoMensaje='error'
       this.mensaje='Todos los campos son obligatorios';
@@ -164,6 +171,7 @@ export class UsersComponent implements OnInit {
         usuariobuscado.estado=this.estado;
       }
       this.idEditar=null;
+      this.guardarUsuarios();
       this.buscarUsuarios();
       alert('usuario actulizado')
       this.limpiarFormularioAutomatico();
@@ -181,7 +189,9 @@ export class UsersComponent implements OnInit {
 
     
     this.usuarios.push(nuevoUsuario);
+    this.guardarUsuarios();
     this.buscarUsuarios();
+    this.actualizarPaginacion();
     this.tipoMensaje='success';
     this.mensaje='usuario registrado correctamente.';
 
@@ -227,15 +237,6 @@ export class UsersComponent implements OnInit {
     this.correo=usuario.correo;
     this.rol=usuario.rol;
     this.estado=usuario.estado;
-  }
-
-  eliminarUsuario(id:number):void{
-    const respuesta= confirm('¿Desea eliminar este usuario?')
-    if(!respuesta){
-      return
-    }
-    this.usuarios=this.usuarios.filter(usuario=>usuario.id!=id);
-    this.buscarUsuarios();
   }
   actualizarPaginacion():void{
     const inicio=(this.paginaActual-1)*this.registroPorPagina;
@@ -322,4 +323,54 @@ export class UsersComponent implements OnInit {
     return this.ordenAscendente?'↑':'↓';
   }
 
+  abrirModalEliminar(usuario:Usuario):void{
+    this.usuarioSeleccionado=usuario;
+    this.mostrarModalEliminar=true;
+    
+  }
+  cerrarModal():void{
+    this.mostrarModalEliminar=false;
+    this.usuarioSeleccionado=null;
+  }
+  confirmarEliminar():void{
+    if(!this.usuarioSeleccionado){
+      return
+    }
+    this.usuarios=this.usuarios.filter(usuario=>usuario.id!==this.usuarioSeleccionado!.id)
+    //actulizar  busqueda, filtros, el ordenamiento y paginacion
+    this.guardarUsuarios();
+    this.buscarUsuarios();
+    this.actualizarPaginacion();
+
+    //mensaje de exitos
+    this.tipoMensaje='success'
+    this.mensaje='usuario eliminado corretamente'
+
+    this.cerrarModal();
+  }
+
+  guardarUsuarios():void{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.usuarios));
+    this.actualizarPaginacion();
+  }
+  cargarUsuarios():void{
+    const datos= localStorage.getItem(STORAGE_KEY)
+    if(datos){
+      this.usuarios=JSON.parse(datos);
+    }else{
+      this.cargarDatosIniciales();
+      this.guardarUsuarios();
+      
+    }
+    this.usuariosFiltrados=[...this.usuarios];
+  }
+  reiniciarDatos():void{
+    const respuesta= confirm('¿Desea restaurar los usuarios iniciales?')
+    if(!respuesta){
+      return
+    }
+    localStorage.removeItem(STORAGE_KEY);
+    this.cargarUsuarios();
+    this.buscarUsuarios();
+  }
 }

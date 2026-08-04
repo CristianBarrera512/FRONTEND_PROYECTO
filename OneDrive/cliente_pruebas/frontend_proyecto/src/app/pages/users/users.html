@@ -54,6 +54,7 @@
                     <button class="btn-primary"
                         (click)="registrarUsuario()">{{idEditar==null?'Registro':'Actualizar'}}</button>
                     <button class="btn-secondary" (click)="limpiarFormulario()">Limpiar</button>
+                    <button class="btn-secondary" (click)="reiniciarDatos()">Restaurar datos</button>
                 </div>
             </section>
             <section class="table-panel">
@@ -105,7 +106,7 @@
                                 </td>
                                 <td>
                                     <button class="btn-edit" (click)="editarUsuario(usuario)">✍️</button>
-                                    <button class="btn-delete" (click)="eliminarUsuario(usuario.id)">🪰</button>
+                                    <button class="btn-delete" (click)="abrirModalEliminar(usuario)">🪰</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -135,5 +136,34 @@
         <footer class="page-footer">
             Sistema Adson - Panels de Administracion
         </footer>
+    </div>
+</div>
+
+
+<!--Modal eliminar usuario-->
+<div class="modal-overlay" *ngIf="mostrarModalEliminar">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>confirmar eliminacion</h2>
+        </div>
+        <div class="modal-body">
+            <p>¿Desea eliminar el siguiente usuario?</p>
+            <div class="user-info-modal">
+                <strong>
+                    {{usuarioSeleccionado?.nombre}}
+                    {{usuarioSeleccionado?.apellido}}
+                </strong>
+                <span>
+                    {{usuarioSeleccionado?.correo}}
+                </span>
+            </div>
+            <p class="warning">
+                Esta accion no se puede deshacer.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" (click)="cerrarModal()">Cancelar</button>
+            <button class="btn-danger" (click)="confirmarEliminar()">Eliminar</button>
+        </div>
     </div>
 </div>
