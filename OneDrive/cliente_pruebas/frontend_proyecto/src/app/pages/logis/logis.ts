@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
+
+interface UsuarioSistema{
+  nombre:string;
+  correo:string;
+  password:string;
+  rol:string;
+}
+
 @Component({
   selector: 'app-logis',
   imports: [FormsModule],
@@ -15,6 +24,27 @@ export class LogisComponent {
   //constructor para usar las rutas 
   constructor (private router:Router){}
 
+  usuariosSistema:UsuarioSistema[]=[
+    {
+      nombre:'Administrador',
+      correo:'admin@sena.edu.com',
+      password:'123456',
+      rol:'Administrador'
+    },
+        {
+      nombre:'Fabian Instructor',
+      correo:'instrucotr@sena.edu.com',
+      password:'123456',
+      rol:'Instrucotr'
+    },
+    {
+      nombre:'Aprendiz',
+      correo:'Aprendiz@sena.edu.com',
+      password:'123456',
+      rol:'Aprendiz'
+    }
+  ]
+
   //Variable para alamacenar correo
   email: string='';
   // Variable para almacenar contraseña 
@@ -24,24 +54,23 @@ export class LogisComponent {
   private readonly email_correcta: string="pera000890@gmail.com"
   //metodo que sera ejecutado al precionar el boton de ingresar
   login(): void{
-    if ( this.email === this.email_correcta){
-
-      console.log('correo;',this.email)
-
-      if ( this.password === this.password_correcta){
-
-      console.log('Password:',this.password);
-  
-      alert('los datos considen \n\n'+'la contraseña ingresada fue:'+ this.password+'\n\n el correo fue ingresada fue:'+ this.email)
-      localStorage.setItem('usuarioLogeado','true')
-      this.router.navigate(['/dashboard'])
-
-      }else {
-      alert('la contraseña no concide\n\n'+ 'La contraseña ingresada fue:'+ this.password)
+      const usuario=this.usuariosSistema.find(
+        u=>u.correo===this.email
+      );
+      if(!usuario){
+        alert('el correo no existe')
+        return;
       }
-      }else{
-      alert('el correo no concide\n\n'+'El email ingresada fue:'+ this.email)
+      if (usuario.password!==this.password){
+        alert('no es la contraseña')
       }
+      localStorage.setItem('usuarioLogeado','true');
+      localStorage.setItem('rol',usuario.rol);
+      localStorage.setItem('correo',usuario.correo);
+      localStorage.setItem('nombre',usuario.nombre)
+
+      alert('bienvenido' + usuario.nombre+ '\nRol' + usuario.rol)
+      this.router.navigate(['/dashboard']);
     }
     
   goToRegister():void{

@@ -12,17 +12,19 @@ export class HeaderComponent  implements OnInit, OnDestroy{
   constructor(private router:Router){}
   nombreSistema:string='Sistema ADSO';
   descripcionSistema:string='Plataforma Academica para la gestion Institucional';
-  usuario:string='Administrador';
-  rol:string='Administrador del sistema';
+  usuario:string='';
+  rol:string='';
   fechaactual=signal('');
   horaactual=signal('');
 
   private intervalo:any;
 
   ngOnInit(): void {
+    this.usuario=localStorage.getItem('nombre')??'';
+    this.rol=localStorage.getItem('rol')??'';
     this.actulizarFechaHora();
     this.intervalo=setInterval(()=>{
-      this.actulizarFechaHora();
+    this.actulizarFechaHora();
     },1000);
   }
 

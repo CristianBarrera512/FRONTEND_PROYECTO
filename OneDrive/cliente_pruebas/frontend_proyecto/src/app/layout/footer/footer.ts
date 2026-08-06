@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   nombreSistema:string='Sistema ADSO'
-  Institucion:string='Servicio Nacional de Aprendizaje- Sena'
-  version:string='1.0.0'
-  anio:number= new Date().getFullYear();
-  desarrollo:string='Desarrollado por CAFEC'
+  institucion:string='Servicio Nacional Del Aprendizaje - SENA';
+  version:string='1.0.0';
+  anio:number=new Date().getFullYear();
+  Desarrollador:string='Bryan Reyes Aprendiz'
 }

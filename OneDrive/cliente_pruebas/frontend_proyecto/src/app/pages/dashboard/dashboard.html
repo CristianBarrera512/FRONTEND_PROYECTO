@@ -1,99 +1,88 @@
 <div class="dashboard-container">
-    <!--Contenido principal del dashboard-->
     <main class="content">
         <div class="header">
             <div>
                 <h1>Dashboard</h1>
-                <p>Panel princiapl del sistema</p>
+                <p>Panel Principal del sistema</p>
             </div>
             <div class="user-info">
                 <strong>{{usuario}}</strong>
-                <span> {{rol}}</span>
+                <span>{{rol}}</span>
+
             </div>
         </div>
-        <!--Tarjetas de informacion-->
-        <div class="cards">
+        <!-- Tarjeta de informacion -->
+         <div class="cards">
             <div class="card">
                 <h3>Usuarios</h3>
-                <p> {{estradisitcas.ususarios}} </p>
+                <p>{{estadisticas.usuarios}}</p>
             </div>
             <div class="card">
                 <h3>Roles</h3>
-                <p>{{estradisitcas.roles}}</p>
+                <p>{{estadisticas.roles}}</p>
             </div>
             <div class="card">
-                <h3>cursos</h3>
-                <p>{{estradisitcas.cursos}}</p>
+                <h3>Cursos</h3>
+                <p>{{estadisticas.cursos}}</p>
             </div>
-        </div>
-        <!--Grafica-->
-        <section class="workspace">
-            <h2>Actividad mensual</h2>
-            <p>Representacion grafica utilizando unicamente
-                HTML, CSS Y Angular
-            </p>
+         </div>
+         <!-- GRAFICA CON SECCION NUEVA -->
+         <section class="workspace">
+            <h2>Activadad mensual</h2>
+            <p>Representacion grafica utilizando unicamente HTML, CSS, Angular.</p>
             <div class="chart">
-                @for(item of grafica; track item.mes){
-                <div class="bar-container">
-                    <div class="bar" [style.height.%]="item.valor">
+                @for (item of grafica; track item.mes) {
+                    <div class="bar-container">
+                        <div class="bar" [style.height.%]="item.valor">
+
+                        </div>
+                        <span>{{item.mes}}</span>
                     </div>
-                    <span>{{item.mes}}</span>
-                </div>
                 }
             </div>
-        </section>
-        <section class="workspace">
+         </section>
+         <!-- tabla de datos -->
+         <section class="workspace">
             <h2>Ultimos usuarios registrados</h2>
-            <p>Total Registrados
-                 <strong>{{obtenerTotalUsuarios()}}</strong>
+            <p>Total registrados:
+                <strong>{{obtenerTotalUsuarios()}}</strong>
             </p>
-           <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Rol</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (usuario of usuarios; track usuario.id){
+            <table>
+                <thead>
                     <tr>
-                        <td>
-                            {{usuario.id}}
-                        </td>
-                        <td>
-                            {{usuario.nombre}}
-                        </td>
-                        <td>
-                            {{usuario.correo}}
-                        </td>
-                        <td>
-                            {{usuario.rol}}
-                        </td>
-                        <td>
-                            {{usuario.estado}} 
-                        </td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
                     </tr>
-                }
-            </tbody>
-           </table>
-        </section>
-        <section class="workspace">
-            <h2>Area de trabajo</h2>
-            <P>
-                Desde este panel podran administrar la informacion del sistema
-                gestionar usuario, consultar reportes y acceder a las diferentes funcinalidades 
-                disponibles.
-            </P>
+                </thead>
+                <tbody>
+                    @for (usuario of usuarios; track usuario.id) {
+                        <tr>
+                            <td>{{usuario.id}}</td>
+                            <td>{{usuario.nombre}}</td>
+                            <td>{{usuario.correo}}</td>
+                            <td>{{usuario.rol}}</td>
+                            <td>{{usuario.estado}}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+         </section>
 
-            <button
-                type="button"
-                (click)="mostrarMensaje()"
-            >
-                Mostrar mensaje
+         <section class="workspace">
+            <h2>Area de trabajo</h2>
+            <p>
+                Desde este panel podran administrar la información del sistema, gestionar usuarios, consultar reportes y acceder a las diferentes funcionalidades disponibles.
+            </p>
+            <button type="button"
+            (click)="mostrarMensaje()"> 
+            Mostrar mensaje
             </button>
-        </section>
+         </section>
     </main>
+    
+
+
 </div>

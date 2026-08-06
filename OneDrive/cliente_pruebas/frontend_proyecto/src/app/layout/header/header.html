@@ -4,33 +4,17 @@
             ADSO
         </div>
         <div class="system-text">
-            <h1>
-                {{nombreSistema}}
-            </h1>
-            <span>
-                {{descripcionSistema}}
-            </span>
+            <h1> {{nombreSistema}} </h1>
+            <span> {{descripcionSistema}} </span>
         </div>
     </section>
-
     <section class="user">
         <div class="user-data">
-            <h3>
-                {{usuario}}
-            </h3>
-            <span>
-                {{rol}}
-            </span>
-            <small>
-                🗓️ {{fechaactual()}}
-            </small>
-            <small>
-                🕜  {{horaactual()}}
-            </small>
+            <h3> {{usuario}} </h3>
+            <span> {{rol}} </span>
+            <small> 📆 {{fechaactual()}} </small>
+            <small> ⌚ {{horaactual()}} </small>
         </div>
-        <button class="logout" (click)="cerrarSesion()">
-            Cerrar Sesion
-        </button>
+        <button class="logout" (click)="cerrarSesion()"> Cerrar Sesión </button>
     </section>
-
 </header>
