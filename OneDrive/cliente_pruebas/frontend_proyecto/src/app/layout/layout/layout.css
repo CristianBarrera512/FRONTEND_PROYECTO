@@ -16,7 +16,7 @@
     flex-shrink:0;
 }
 .layout-main{
-    flex: 1px;
+    flex:1;
     overflow: hidden;
     display:flex;
 }

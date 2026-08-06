@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, signal,} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { interval } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   imports: [],
@@ -8,7 +9,7 @@ import { interval } from 'rxjs';
   styleUrl: './header.css',
 })
 export class HeaderComponent  implements OnInit, OnDestroy{
-
+  constructor(private router:Router){}
   nombreSistema:string='Sistema ADSO';
   descripcionSistema:string='Plataforma Academica para la gestion Institucional';
   usuario:string='Administrador';
@@ -49,6 +50,8 @@ export class HeaderComponent  implements OnInit, OnDestroy{
   }
 
   cerrarSesion():void{
+    localStorage.removeItem('usuarioLogeado')
+    this.router.navigate(['/login'])
     alert('Aqui se cerro sesion')
   }
    

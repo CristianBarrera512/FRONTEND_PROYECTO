@@ -31,8 +31,9 @@ export class LogisComponent {
       if ( this.password === this.password_correcta){
 
       console.log('Password:',this.password);
-
+  
       alert('los datos considen \n\n'+'la contraseña ingresada fue:'+ this.password+'\n\n el correo fue ingresada fue:'+ this.email)
+      localStorage.setItem('usuarioLogeado','true')
       this.router.navigate(['/dashboard'])
 
       }else {

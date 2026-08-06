@@ -63,7 +63,7 @@ export class DashboardComponent {
       estado:'Activo'
     },
     {
-      id:'2',
+      id:3,
       nombre:'carlos rodriguez',
       correo:'carlos@sena.edu.co',
       rol:'Adminisytrador',
