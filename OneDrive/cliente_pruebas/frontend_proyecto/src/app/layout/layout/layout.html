@@ -1,23 +1,23 @@
 <div class="layout-container">
     <header class="layout-header">
         <!--Posteriormente se carga el componente headercomponent-->
-        header
+        <app-header></app-header>
     </header>
 
     <main class="layout-main">
         <!--contenido principal-->
         <aside class="layout-sidebar">
-            Sidebar
+            <app-sidebar></app-sidebar>
             <!--Posteriormente se carga el componente sidebarcomponent-->
         </aside>  
         <!--Contenido dinamico-->     
          <section class="layout-content">
             <!--Aqui va los componente de dashboard-->
-            Router-Outlet
+             <router-outlet></router-outlet>
          </section>
     </main>
     <footer class="layout-footer">
         <!--componente de footer-->
-        footer
+        <app-footer></app-footer>
     </footer>
 </div>

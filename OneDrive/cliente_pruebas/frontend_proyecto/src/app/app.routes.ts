@@ -1,18 +1,32 @@
-import { Routes } from '@angular/router';
-
 // importacion del componente logins
-
 import { LogisComponent } from './pages/logis/logis';
 import { RegisterComponent } from './pages/register/register';
 import { DashboardComponent } from './pages/dashboard/dashboard';
 import { UsersComponent } from './pages/users/users';
+import { LayoutComponent } from './layout/layout/layout';
+import { Routes } from '@angular/router';
+
 
 // Definición de rutas de la aplicacion 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    component: LayoutComponent,
+    children:[
+        {
+            path:'',
+            redirectTo:'dashboard',
+            pathMatch:'full'
+        },
+        {
+            path:'dashboard',
+            component:DashboardComponent
+        },
+        {
+            path:'users',
+            component:UsersComponent
+        }
+    ]
   },
   {
     path: 'login',
@@ -22,12 +36,5 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-  {
-    path:'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path:'users',
-    component: UsersComponent
-  }
+
 ]; 

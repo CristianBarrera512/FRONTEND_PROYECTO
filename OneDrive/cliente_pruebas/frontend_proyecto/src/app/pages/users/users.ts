@@ -48,7 +48,7 @@ export class UsersComponent implements OnInit {
   paginaActual: number=1;
 
   //cantidad de registro por pagina
-  registroPorPagina:number=2;
+  registroPorPagina:number=10;
   
   //lista que realmente muestra la tabla osea paginada
   usuariosPaginados:Usuario[]=[];
