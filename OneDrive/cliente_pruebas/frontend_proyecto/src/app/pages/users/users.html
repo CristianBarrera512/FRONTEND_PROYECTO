@@ -3,12 +3,12 @@
         <section class="page-header">
             <div class="header-info">
                 <div class="header-icon">
-                    🤴
+                    👻
                 </div>
                 <div>
-                    <h1>Gestion de Usuarios</h1>
+                    <h1>Gestion De Usuarios</h1>
                     <p>
-                        Administracion de usuarios registrados en el sistema
+                        Administracion de usuarios registrado en el sistema
                     </p>
                 </div>
             </div>
@@ -19,136 +19,162 @@
                     <span>➕</span>
                     <h2>Registrar Usuario</h2>
                 </div>
-                <div *ngIf="mensaje" class="alert" [class.success]="tipoMensaje==='success'"
+                <div
+                    *ngIf="mensaje"
+                    class="alert"
+                    [class.succes]="tipoMensaje==='success'"
                     [class.error]="tipoMensaje==='error'">
                     {{mensaje}}
-                    >
-
                 </div>
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" placeholder="ingrese el nombre" [(ngModel)]="nombre">
+                    <input type="text" placeholder="Ingrese el nombre" [(ngModel)]="nombre">
                 </div>
                 <div class="form-group">
                     <label>Apellido</label>
-                    <input type="text" placeholder="ingrese el apellido" [(ngModel)]="apellido">
+                    <input type="text" placeholder="Ingrese Apellido" [(ngModel)]="apellido">
                 </div>
                 <div class="form-group">
-                    <label>correo</label>
-                    <input type="email" placeholder="ingrese el correo" [(ngModel)]="correo">
+                    <label>Correo</label>
+                    <input type="email" placeholder="Correo@sena.edu.co" [(ngModel)]="correo">
                 </div>
                 <div class="form-group">
-                    <label>rol</label>
+                    <label>Rol</label>
                     <select [(ngModel)]="rol">
                         <option>Administrador</option>
-                        <option>instructor</option>
+                        <option>Instructor</option>
                         <option>Aprendiz</option>
                     </select>
                 </div>
                 <div class="checkbox-group">
                     <label>
-                        <input type="checkbox" [(ngModel)]="estado">Usuario Activo
+                        <input type="checkbox" [(ngModel)]="estado">
+                        Usuario Activo
                     </label>
                 </div>
                 <div class="buttons">
-                    <button class="btn-primary"
-                        (click)="registrarUsuario()">{{idEditar==null?'Registro':'Actualizar'}}</button>
+                    <button class="btn-primary" (click)="registrarUsuario()">{{idEditar==null?'Registro':'Actualizar'}}</button>
                     <button class="btn-secondary" (click)="limpiarFormulario()">Limpiar</button>
-                    <button class="btn-secondary" (click)="reiniciarDatos()">Restaurar datos</button>
+                    <button class="btn-secundary" (click)="reiniciarDatos()">Restaurar Datos</button>
                 </div>
             </section>
             <section class="table-panel">
                 <div class="panel-title">
                     <span>📒</span>
-                    <h2>Usuario Registrados</h2>
+                    <h2>Usuario Registardo</h2>
                     <p class="table-info">
                         Total de usuarios: <strong>{{obtenerTotalUsuarios()}}</strong>
                     </p>
                 </div>
                 <div class="toolbar">
-                    <input type="text" placeholder="Buscar uusarios" [(ngModel)]="textoBusqueda"
+                    <input
+                        type="text"
+                        placeholder="Buscar usuario..."
+                        [(ngModel)]="textoBusqueda"
                         (input)="buscarUsuarios()">
-                    <select [(ngModel)]="filtroRol" (change)="buscarUsuarios()">
-                        <option value="">Todos los roles</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="instructor">instructor</option>
-                        <option value="Aprendiz">Aprendiz</option>
+                    <select
+                    [(ngModel)]="filtroRol"
+                    (change)="buscarUsuarios()">
+                    <option value= "Todos Los Roles" >Todos Los Roles</option>
+                    <option value= "Administrador" >Administrador</option>
+                    <option value = "Instructor" >Instructor</option>
+                    <option value= "Aprendiz" >Aprendiz</option>
+                        
                     </select>
                 </div>
                 <p class="table-info">
-                    Usuarios encontrados: <strong>{{usuariosFiltrados.length}}</strong>
+                    Usuarios Encontrados: <strong>{{usuariosFiltrados.length}}</strong>
                 </p>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th class="sortable" (click)="ordenar('id')">Id {{obtenerIconoOrden('id')}}</th>
-                                <th class="sortable" (click)="ordenar('nombre')">nombre {{obtenerIconoOrden('nombre')}} </th>
-                                <th class="sortable" (click)="ordenar('apellido')">apellido {{obtenerIconoOrden('apellido')}} </th>
-                                <th class="sortable" (click)="ordenar('correo')">correo {{obtenerIconoOrden('correo')}} </th>
-                                <th class="sortable" (click)="ordenar('rol')">rol {{obtenerIconoOrden('rol')}}</th>
-                                <th class="sortable" (click)="ordenar('estado')">estado {{obtenerIconoOrden('estado')}}</th>
+                                <th class="sortable" (click)="ordenar('id')">
+                                    ID {{obtenerIconoOrden('id')}}
+                                </th>
+                                <th class="sortable" (click)="ordenar('nombre')">
+                                    Nombre {{obtenerIconoOrden('nombre')}}
+                                </th>
+                                <th class="sortable" (click)="ordenar('apellido')">
+                                    Apellido {{obtenerIconoOrden('apellido')}}
+                                </th>
+                                <th class="sortable" (click)="ordenar('correo')">
+                                    Correo {{obtenerIconoOrden('correo')}}
+                                </th>
+                                <th class="sortable" (click)="ordenar('rol')">
+                                    Rol {{obtenerIconoOrden('rol')}}
+                                </th>
+                                <th class="sortable" (click)="ordenar('estado')">
+                                    Estado {{obtenerIconoOrden('estado')}}
+                                </th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let  usuario of usuariosPaginados">
+                            <tr *ngFor="let usuario of usuariosPaginados">
                                 <td>{{usuario.id}}</td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.apellido}}</td>
                                 <td>{{usuario.correo}}</td>
                                 <td>{{usuario.rol}}</td>
                                 <td>
-                                    <span class="status-badge" [class.active]="usuario.estado"
+                                    <span class="status-badge" 
+                                        [class.active]="usuario.estado"
                                         [class.inactive]="!usuario.estado">
-                                        {{usuario.estado?'Activos':'Inactivo'}}
+
+                                        {{usuario.estado?'Activo':'Inactivo'}}
                                     </span>
                                 </td>
                                 <td>
-                                    <button class="btn-edit" (click)="editarUsuario(usuario)">✍️</button>
-                                    <button class="btn-delete" (click)="abrirModalEliminar(usuario)">🪰</button>
+                                    <button class="btn-edit" (click)="editarUsuario(usuario)">✏️</button>
+                                    <button class="btn-delete" (click)="abrirModalEliminar(usuario)">🗑️</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="pagination-info">
-                        Mostrando {{usuariosPaginados.length}} de {{usuariosFiltrados.length}} usuarios
+                        Mostrando {{usuariosPaginados.length}} de {{usuariosFiltrados.length}}
                     </div>
+
                     <div class="pagination">
-                        <button (click)="anteriorPagina()" [disabled]="paginaActual==1">
-                            ⬅️Anterior
+                        <button (click)="anteriorPagina()"[disabled]="paginaActual==1">
+                            ⬅️ Anterior
                         </button>
-                        <button *ngFor="let pagina of obtenerPaginas()"
-                        (click)="cambiarPagina(pagina)"
-                        [class.active-page]="pagina==paginaActual"
-                        >{{pagina}}
+                        <button *ngFor=" let pagina of obtenerPaginas()"
+                        (click)= "cambiarPagina(pagina)"
+                        [class.active.page]="pagina==paginaActual">
+                        {{pagina}}
                         </button>
                         <button (click)="siguientePagina()"
-                        [disabled]="paginaActual==obtenerTotalPaginas()">
-                           Siguiente ➡️
+                            [disabled]="paginaActual==obtenerTotalPaginas()">
+                            Siguiente ➡️
                         </button>
-
+                        
                     </div>
-
+                    
                 </div>
             </section>
         </div>
+
+
         <footer class="page-footer">
-            Sistema Adson - Panels de Administracion
+            Sistema ADSO - Panel de Administracion
         </footer>
+
+
     </div>
 </div>
 
-
-<!--Modal eliminar usuario-->
+<!--Modal Eliminar usuario-->
 <div class="modal-overlay" *ngIf="mostrarModalEliminar">
     <div class="modal">
         <div class="modal-header">
-            <h2>confirmar eliminacion</h2>
+            <h2>Confirmar Eliminacion</h2>
         </div>
         <div class="modal-body">
             <p>¿Desea eliminar el siguiente usuario?</p>
-            <div class="user-info-modal">
+
+            <div class="user-info-model">
                 <strong>
                     {{usuarioSeleccionado?.nombre}}
                     {{usuarioSeleccionado?.apellido}}
@@ -158,9 +184,10 @@
                 </span>
             </div>
             <p class="warning">
-                Esta accion no se puede deshacer.
+                Esta accion no se puede deshacer
             </p>
         </div>
+
         <div class="modal-footer">
             <button class="btn-cancel" (click)="cerrarModal()">Cancelar</button>
             <button class="btn-danger" (click)="confirmarEliminar()">Eliminar</button>

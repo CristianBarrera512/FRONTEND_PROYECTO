@@ -227,64 +227,60 @@ tbody tr:hover{
 }
 
 .alert{
-    padding:14px;
-    border-radius:10px;
+    padding: 14px;
+    border-radius: 10px;
     margin-bottom: 20px;
-    font-weight:600;
+    font-weight: 600;
 }
-
 .success{
-    background: #183823;
-    color:#166534
+    background: #a2f5bf;
+    color: #166534;
 }
 
 .error{
-    background:#fee2e2;
-    color:#991b1b;
+    background: #fee2e2;
+    color: #991b1b;
 }
+
 .toolbar{
-    display:flex;
-    gap:15px;
-    margin-bottom:20px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .toolbar input{
-    flex:1;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:8px;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
 }
-
 .toolbar select{
-    width:220px;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:8px;
+    width: 220px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
 }
 
 .btn-edit{
-    background:#facc15;
-    border:none;
-    padding:8px;
-    border-radius:6px;
-    cursor:pointer;
-    margin-right:6px;
+    background: #facc15;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
 }
 .btn-delete{
     background: #ef4444;
-    color:white;
+    color: white;
     border:none;
-    padding:8px ;
-    border-radius:6px;
-    cursor:pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
 }
-
-
-
 .btn-edit:hover{
     background: #eab308;
 }
-.btn-edit:hover{
+.btn-delete:hover{
     background: #dc2626;
 }
 
@@ -292,153 +288,157 @@ tbody tr:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:10px;
-    margin-top:25px;
-    flex-wrap:wrap;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
 }
 
-.pagination button {
-    min-width:42px;
+.pagination button{
+    min-width: 42px;
     height: 42px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    background:white;
-    transition:.3s;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    transition: .3s;
 }
+
 .pagination button:hover{
     background: #eff6ff;
 }
 
 .pagination button:disabled{
-    opacity:.4s;
-    cursor:not-allowed;
+    opacity: .4;
+    cursor: not-allowed;
 }
 
 .active-page{
-    background:#2563eb !important;
-    color:white;
+    background: #2563eb !important;
+    color: white;
 }
 
 .pagination-info{
-    text-align:right;
-    margin-top:20px;
-    color:#64478b;
-    font-size:14px;
+    text-align: right;
+    margin-top: 20px;
+    color: #64478b;
+    font-size: 14px;
 }
 
 .sortable{
-    cursor:pointer;
-    user-select:none;
-    transition:.3s;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s;
 }
 
 .sortable:hover{
-    background:#1d4ed8;
+    background: #1d4ed8;
 }
 
 .sortable:active{
-    transform:scale(.98);
+    transform: scale(.98);
 }
 
 .modal-overlay{
-    position:fixed;
-    inset:0;
-    background: rgba(15,23,42, .55);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-    animation:fadeBackground;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeBackground .25s;
 }
 
 .modal{
-    width:450px;
-    Background:white;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-    animation:modalShow .3s ease;
+    width: 450px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+    animation: modalShow .3s ease;
+}
+
+.modal-header{
+    background: #0f172a;
+    color: white;
+    padding: 20px;
 }
 
 .modal-body{
-    padding:30px;
+    padding: 30px;
 }
 
 .modal-body p{
-    margin-bottom:18px;
+    margin-bottom: 18px;
 }
 
 .user-info-modal{
-    background:#eff6ff;
+    background: #eff6ff;
     border-left: 5px solid #2563eb;
-    padding:15px;
-    border-radius:8px;
-    display:flex;
-    flex-direction:column;
-    margin-bottom:20px;
-    gap:6px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
 }
 
 .warning{
-    color:#dc2626;
+    color: #dc2626;
     font-weight: 600;
 }
 
 .modal-footer{
-    display:flex;
-    justify-content:flex-end;
-    gap:15px;
-    padding:20px;
-    background:#f8fafc;
-}
-.btn-cancel{
-    background:white;
-    color:#0f172a;
-    border:none;
-    padding:8px 12px;
-    border-radius:6px;
-    cursor:pointer;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 20px;
+    background: #f8fafc;
 }
 
+.btn-cancel{
+    background: #cbd5e1;
+    color: #0f172a;
+    border:none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 .btn-cancel:hover{
-    background:#94a3b8;
+    background: #94a3b8;
 }
 
 .btn-danger{
-    background: #ef4444;
-    color:white;
+    background: #dc2626;
+    color: white;
     border:none;
-    padding:8px ;
-    border-radius:6px;
-    cursor:pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
 }
+
 .btn-danger:hover{
     background: #b91c1c;
 }
 
-.modal-header{
-    background:#0f172a;
-    color:white;
-    padding:20px;
-}
-
-
 @keyframes modalShow{
     from{
-        transform: translateY(-20px)scale(.95);
-    }
-    to{
-        transform:translateY(0) scale(1);
-    }
-}
-
-@keyframes faceBackground{
-    from{
+        transform:translateY(-20px) scale(.95);
         opacity:0;
     }
     to{
+        transform:translateY(0) scale(1);
         opacity:1;
+    }
+
+}
+
+@keyframes fadeBackground {
+    from{
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
     }
 }
 
