@@ -53,7 +53,6 @@ export class AuthService {
             rol:usuario.rol
         }
         localStorage.setItem(this.STORAGE_KEY,JSON.stringify(usuarioAuth));
-        localStorage.setItem('usuarioLogeado','true');
         return true;
     }
 

@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit {
   nombre:string='';
   apellido:string='';
   correo:string='';
-  rol:string='Aprendiz';
+  rol:string='Administrador';
   estado:boolean=true;
   
   /**Listas de usuarios, un arrelgo de usuarios */

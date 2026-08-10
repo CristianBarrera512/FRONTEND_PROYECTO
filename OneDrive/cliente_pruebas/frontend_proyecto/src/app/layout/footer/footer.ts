@@ -11,5 +11,5 @@ export class FooterComponent {
   institucion:string='Servicio Nacional Del Aprendizaje - SENA';
   version:string='1.0.0';
   anio:number=new Date().getFullYear();
-  Desarrollador:string='Bryan Reyes Aprendiz'
+  Desarrollador:string='CACEF'
 }

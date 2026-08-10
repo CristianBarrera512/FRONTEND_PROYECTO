@@ -1,0 +1,57 @@
+<div class="contenido-container">
+    <!--Seccion de Cards-->
+    <section class="cards-section">
+        <div class="section-header">
+            <h1>Contenido Destacado</h1>
+            <p>
+                Explora la diferente opciones disponible
+            </p>
+        </div>
+        <!--Carrusel-->
+        <div class="carrusel-container">
+            <div class="cards container">
+                <!--cards dinamicas-->
+                <article class="card" *ngFor="let card of cards">
+                    <div class="cards-imagen">
+                        <img 
+                            [src]="card.cards.imagen"
+                            [alt]="card.texto"
+                        >
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            {{card.texto}}
+                        </p>
+                        <button (click)="ejecutarAccion(card)">
+                            {{card.boton}}
+                        </button>
+                    </div>
+                </article> 
+            </div>
+        </div>
+    </section>
+
+    <!--Subsecciones-->
+
+    <section class="subsection-section">
+        <div class="section-header">
+            <h2>Informacion</h2>
+            <p>
+                conoce mas acerca de nuestra plataforma
+            </p>
+        </div>
+        <!--Section dinamica-->
+        <article class="subsection" *ngFor="let seccion of subsecciones">
+            <div class="subsection-image">
+                <img 
+                    [src]="seccion.imagen"
+                    [alt]="seccion.titulo"
+                >
+            </div>
+            <div class="subsection-content">
+                <h3>{{seccion.titulo}}</h3>
+                <p>{{seccion.texto}}</p>
+            </div>
+        </article>
+    </section>
+</div>

@@ -30,11 +30,11 @@ export class LogisComponent {
     const autenticado=this.authService.iniciarSesion(this.email,this.password);
 
     if(!autenticado){
-      alert('correo o contraseña esta mal hijo de puta >:(')
+      alert('correo o contraseña esta ,MAL')
       return;
     }
     const usuario=this.authService.obtenerUsuario();
-      alert('bienvenido ${usuario?.nombre}\nrol:${usuario?.rol}')
+      alert(`bienvenido ${usuario?.nombre}\nrol:${usuario?.rol}`)
 
       this.router.navigate(['/dashboard']);
     }

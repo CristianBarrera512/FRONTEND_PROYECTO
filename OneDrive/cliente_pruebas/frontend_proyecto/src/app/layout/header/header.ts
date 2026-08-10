@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, signal,} from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { interval } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-header',
   imports: [],
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.css',
 })
 export class HeaderComponent  implements OnInit, OnDestroy{
-  constructor(private router:Router){}
+  constructor(private router:Router, private authService:AuthService){}
   nombreSistema:string='Sistema ADSO';
   descripcionSistema:string='Plataforma Academica para la gestion Institucional';
   usuario:string='';
@@ -20,8 +20,8 @@ export class HeaderComponent  implements OnInit, OnDestroy{
   private intervalo:any;
 
   ngOnInit(): void {
-    this.usuario=localStorage.getItem('nombre')??'';
-    this.rol=localStorage.getItem('rol')??'';
+    this.usuario=this.authService.obtenernombre();
+    this.rol=this.authService.obtenerRol();
     this.actulizarFechaHora();
     this.intervalo=setInterval(()=>{
     this.actulizarFechaHora();
@@ -52,7 +52,7 @@ export class HeaderComponent  implements OnInit, OnDestroy{
   }
 
   cerrarSesion():void{
-    localStorage.removeItem('usuarioLogeado')
+    this.authService.cerrarSesion();
     this.router.navigate(['/login'])
     alert('Aqui se cerro sesion')
   }

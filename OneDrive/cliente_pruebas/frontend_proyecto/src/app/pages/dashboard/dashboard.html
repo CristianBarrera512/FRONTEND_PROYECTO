@@ -1,55 +1,50 @@
 <div class="dashboard-container">
-    <!--Contenido Principal de dashboard-->
     <main class="content">
         <div class="header">
             <div>
                 <h1>Dashboard</h1>
-                <p>Panel principal del sistema</p>
+                <p>Panel Principal del sistema</p>
             </div>
-
             <div class="user-info">
                 <strong>{{usuario}}</strong>
                 <span>{{rol}}</span>
+
             </div>
         </div>
-        <!--Tarjetas de informacion-->
-        <div class="cards">
+        <!-- Tarjeta de informacion -->
+         <div class="cards">
             <div class="card">
-                <h3> Usuarios </h3>
-                <p> {{estadisticas.usuarios}} </p>
+                <h3>Usuarios</h3>
+                <p>{{estadisticas.usuarios}}</p>
             </div>
             <div class="card">
-                <h3> Roles </h3>
-                <p> {{estadisticas.roles}} </p>
+                <h3>Roles</h3>
+                <p>{{estadisticas.roles}}</p>
             </div>
             <div class="card">
-                <h3> Cursos </h3>
-                <p> {{estadisticas.cursos}} </p>
+                <h3>Cursos</h3>
+                <p>{{estadisticas.cursos}}</p>
             </div>
-        </div>
-        <!--Grafica-->
-        <section class="wordspace">
-            <h2>Actividad Mensual</h2>
-            <p>
-                Representacion grafica utilizando unicamente 
-                HTML, CSS y Angular
-            </p>
-            <!--Graficar La grafica-->
+         </div>
+         <!-- GRAFICA CON SECCION NUEVA -->
+         <section class="workspace">
+            <h2>Activadad mensual</h2>
+            <p>Representacion grafica utilizando unicamente HTML, CSS, Angular.</p>
             <div class="chart">
-                @for(item of grafica; track item.mes){
+                @for (item of grafica; track item.mes) {
                     <div class="bar-container">
                         <div class="bar" [style.height.%]="item.valor">
+
                         </div>
                         <span>{{item.mes}}</span>
                     </div>
                 }
             </div>
-        </section>
-        <!--Tabla-->
-        <section class="workspaces">
-
-            <h2>Ultimos Usuarios Registrados</h2>
-            <p>Total Registrados: 
+         </section>
+         <!-- tabla de datos -->
+         <section class="workspace">
+            <h2>Ultimos usuarios registrados</h2>
+            <p>Total registrados:
                 <strong>{{obtenerTotalUsuarios()}}</strong>
             </p>
             <table>
@@ -63,39 +58,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (usuario of usuarios; track usuario.id){
+                    @for (usuario of usuarios; track usuario.id) {
                         <tr>
-                            <td>
-                                {{usuario.id}}
-                            </td>
-                            <td>
-                                {{usuario.nombre}}
-                            </td>
-                            <td>
-                                {{usuario.correo}}
-                            </td>
-                            <td>
-                                {{usuario.rol}}
-                            </td>
-                            <td>
-                                {{usuario.estado}}
-                            </td>
+                            <td>{{usuario.id}}</td>
+                            <td>{{usuario.nombre}}</td>
+                            <td>{{usuario.correo}}</td>
+                            <td>{{usuario.rol}}</td>
+                            <td>{{usuario.estado}}</td>
                         </tr>
-                    } 
+                    }
                 </tbody>
             </table>
-        </section>
-        <section class="workspace">
-            <h2> Area De Trabajo </h2>
-            <p> Desde este panel podrás administrar la información del sistema, 
-                gestionar usuarios, consultar reportes y acceder a las diferentes 
-                funcionalidads disponibles.</p>
-            <button 
-                type="button" 
-                (click)="mostrarMensaje()"
-            >
-                Mostrar Mensaje
+         </section>
+
+         <section class="workspace">
+            <h2>Area de trabajo</h2>
+            <p>
+                Desde este panel podran administrar la información del sistema, gestionar usuarios, consultar reportes y acceder a las diferentes funcionalidades disponibles.
+            </p>
+            <button type="button"
+            (click)="mostrarMensaje()"> 
+            Mostrar mensaje
             </button>
-        </section>
+         </section>
     </main>
+    
+
+
 </div>
