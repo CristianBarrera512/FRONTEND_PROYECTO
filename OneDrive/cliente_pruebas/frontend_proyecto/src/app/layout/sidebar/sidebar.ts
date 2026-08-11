@@ -52,8 +52,8 @@ export class SidebarComponent {
     },
     {
       icono:'📚',
-      nombre:'cursos',
-      ruta:'/cursos',
+      nombre:'componente dinamico',
+      ruta:'/contenido',
       roles:[
         'Administrador',
         'Instructor',

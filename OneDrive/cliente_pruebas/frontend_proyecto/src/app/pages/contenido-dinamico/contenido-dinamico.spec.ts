@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { contenidodinamicoComponent } from './contenido-dinamico';
+import { ContenidoDinamicoComponent } from './contenido-dinamico';
 
-describe('ContenidoDinamico', () => {
-  let component: contenidodinamicoComponent;
-  let fixture: ComponentFixture<contenidodinamicoComponent>;
+describe('ContenidoDinamicoComponent', () => {
+  let component: ContenidoDinamicoComponent;
+  let fixture: ComponentFixture<ContenidoDinamicoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [contenidodinamicoComponent],
+      imports: [ContenidoDinamicoComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(contenidodinamicoComponent);
+    fixture = TestBed.createComponent(ContenidoDinamicoComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

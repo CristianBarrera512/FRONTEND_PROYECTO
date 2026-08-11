@@ -6,6 +6,7 @@ import { UsersComponent } from './pages/users/users';
 import { LayoutComponent } from './layout/layout/layout';
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth-guard';
+import { ContenidoDinamicoComponent} from './pages/contenido-dinamico/contenido-dinamico';
 
 
 // Definición de rutas de la aplicacion 
@@ -29,6 +30,10 @@ export const routes: Routes = [
         {
             path:'users',
             component:UsersComponent
+        },
+        {
+            path:'contenido',
+            component:ContenidoDinamicoComponent
         }
     ]
   },
