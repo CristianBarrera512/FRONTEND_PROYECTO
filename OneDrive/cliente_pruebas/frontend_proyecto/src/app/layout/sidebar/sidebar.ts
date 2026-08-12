@@ -59,6 +59,16 @@ export class SidebarComponent {
         'Instructor',
         'Aprendiz'
       ]
+    }  ,
+    {
+      icono:'📚',
+      nombre:'material',
+      ruta:'/reservas',
+      roles:[
+        'Administrador',
+        'Instructor',
+        'Aprendiz'
+      ]
     }  
   ];
 

@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout/layout/layout';
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth-guard';
 import { ContenidoDinamicoComponent} from './pages/contenido-dinamico/contenido-dinamico';
+import { ReservaVuelosComponent } from './pages/vuelos/reserva-vuelos/reserva-vuelos';
 
 
 // Definición de rutas de la aplicacion 
@@ -34,6 +35,10 @@ export const routes: Routes = [
         {
             path:'contenido',
             component:ContenidoDinamicoComponent
+        },
+        {
+          path:'reservas',
+          component:ReservaVuelosComponent
         }
     ]
   },
