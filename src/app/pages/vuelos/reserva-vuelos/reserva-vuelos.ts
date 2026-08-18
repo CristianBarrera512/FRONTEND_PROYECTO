@@ -37,7 +37,7 @@ interface Vuelo {
     MatProgressBarModule,
     MatProgressSpinnerModule,
     FormsModule,
-    NgIf
+
 ],
   templateUrl: './reserva-vuelos.html',
   styleUrl: './reserva-vuelos.css',
