@@ -18,10 +18,10 @@ jobs:
     steps:
 
       - name: Checkout repository
-        user: actions/checkout@v6
+        uses: actions/checkout@v6
 
       - name: Setup Node.jobs
-        user: actions/setup.node@v6
+        uses: actions/setup.node@v6
         with:
           node-version: 22
           cache: npm
